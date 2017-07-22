@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.TimerTask;
 @SuppressWarnings("deprecation")
 public class CapPhoto extends Service {
-    public String TAG = "marclog";
+    public String TAG = "marclog_CapPhoto";
     private Handler mHandler = new Handler();
     @Override
     public void onCreate() {
@@ -23,7 +23,8 @@ public class CapPhoto extends Service {
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
         Log.d(TAG, "start of onStart method in service");
-        while(true) {
+        while (true) {
+            Log.d(TAG, "start sleeping");
             try {
                 Thread.sleep(10000);
             } catch (Exception e) {
@@ -34,11 +35,12 @@ public class CapPhoto extends Service {
             intent2.setAction(Intent.ACTION_MAIN);
             intent2.addCategory(Intent.CATEGORY_LAUNCHER);
             intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent2.setComponent(new ComponentName("com.example.marc.abc001","com.example.marc.abc001.MainActivity"));
+            intent2.setComponent(new ComponentName("com.example.marc.abc001", "com.example.marc.abc001.MainActivity"));
+            Log.d(TAG, "Calling startActivity now");
             try {
                 startActivity(intent2);
             } catch (Exception e) {
-                Log.d(TAG, "Error on intent2.setComponent");
+                Log.d(TAG, "Error on startActivity");
                 e.printStackTrace();
             }
         }
