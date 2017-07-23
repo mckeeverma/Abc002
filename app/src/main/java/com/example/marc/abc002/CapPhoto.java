@@ -31,7 +31,7 @@ public class CapPhoto extends Service {
                 while (true) {
                     Log.d(TAG, "start sleeping");
                     try {
-                        Thread.sleep(20000);
+                        Thread.sleep(10000);
                     } catch (Exception e) {
                     }
                     Log.d(TAG, "done sleeping");
@@ -53,27 +53,6 @@ public class CapPhoto extends Service {
         PrimeThread p = new PrimeThread();
         p.start();
     }
-//while (true) {
-//    Log.d(TAG, "start sleeping");
-//    try {
-//        Thread.sleep(10000);
-//    } catch (Exception e) {
-//        Log.d(TAG, "Error on Thread.sleep");
-//    }
-//    Log.d(TAG, "done sleeping");
-//    Intent intent2 = new Intent();
-//    intent2.setAction(Intent.ACTION_MAIN);
-//    intent2.addCategory(Intent.CATEGORY_LAUNCHER);
-//    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//    intent2.setComponent(new ComponentName("com.example.marc.abc001", "com.example.marc.abc001.MainActivity"));
-//    Log.d(TAG, "Calling startActivity now");
-//    try {
-//        startActivity(intent2);
-//    } catch (Exception e) {
-//        Log.d(TAG, "Error on startActivity");
-//        e.printStackTrace();
-//    }
-//}
     @Override
     public IBinder onBind(Intent intent) {
         return null;
