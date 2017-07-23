@@ -24,9 +24,8 @@ public class CapPhoto extends Service {
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
         Log.d(TAG, "start of onStart method in service");
-        class PrimeRun implements Runnable {
-            long minPrime;
-            PrimeRun() {
+        class PrimeThread extends Thread {
+            PrimeThread() {
             }
             public void run() {
                 while (true) {
@@ -51,30 +50,30 @@ public class CapPhoto extends Service {
                 }
             }
         }
-        PrimeRun p = new PrimeRun();
-        p.run();
-        //while (true) {
-        //    Log.d(TAG, "start sleeping");
-        //    try {
-        //        Thread.sleep(10000);
-        //    } catch (Exception e) {
-        //        Log.d(TAG, "Error on Thread.sleep");
-        //    }
-        //    Log.d(TAG, "done sleeping");
-        //    Intent intent2 = new Intent();
-        //    intent2.setAction(Intent.ACTION_MAIN);
-        //    intent2.addCategory(Intent.CATEGORY_LAUNCHER);
-        //    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //    intent2.setComponent(new ComponentName("com.example.marc.abc001", "com.example.marc.abc001.MainActivity"));
-        //    Log.d(TAG, "Calling startActivity now");
-        //    try {
-        //        startActivity(intent2);
-        //    } catch (Exception e) {
-        //        Log.d(TAG, "Error on startActivity");
-        //        e.printStackTrace();
-        //    }
-        //}
+        PrimeThread p = new PrimeThread();
+        p.start();
     }
+//while (true) {
+//    Log.d(TAG, "start sleeping");
+//    try {
+//        Thread.sleep(10000);
+//    } catch (Exception e) {
+//        Log.d(TAG, "Error on Thread.sleep");
+//    }
+//    Log.d(TAG, "done sleeping");
+//    Intent intent2 = new Intent();
+//    intent2.setAction(Intent.ACTION_MAIN);
+//    intent2.addCategory(Intent.CATEGORY_LAUNCHER);
+//    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//    intent2.setComponent(new ComponentName("com.example.marc.abc001", "com.example.marc.abc001.MainActivity"));
+//    Log.d(TAG, "Calling startActivity now");
+//    try {
+//        startActivity(intent2);
+//    } catch (Exception e) {
+//        Log.d(TAG, "Error on startActivity");
+//        e.printStackTrace();
+//    }
+//}
     @Override
     public IBinder onBind(Intent intent) {
         return null;
