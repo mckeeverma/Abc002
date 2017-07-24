@@ -19,11 +19,6 @@ public class CapPhoto extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "start of onCreate method in service");
-    }
-    @Override
-    public void onStart(Intent intent, int startId) {
-        super.onStart(intent, startId);
-        Log.d(TAG, "start of onStart method in service");
         class PrimeThread extends Thread {
             PrimeThread() {
             }
@@ -52,6 +47,11 @@ public class CapPhoto extends Service {
         }
         PrimeThread p = new PrimeThread();
         p.start();
+    }
+    @Override
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
+        Log.d(TAG, "start of onStart method in service");
     }
     @Override
     public IBinder onBind(Intent intent) {
