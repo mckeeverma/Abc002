@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -33,7 +34,11 @@ public class CapPhoto extends Service {
                     Intent intent2 = new Intent();
                     intent2.setAction(Intent.ACTION_MAIN);
                     intent2.addCategory(Intent.CATEGORY_LAUNCHER);
-                    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK +
+                                     WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED +
+                                     WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD +
+                                     WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON +
+                                     WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
                     intent2.setComponent(new ComponentName("com.example.marc.abc001", "com.example.marc.abc001.MainActivity"));
                     Log.d(TAG, "Calling startActivity now");
                     try {

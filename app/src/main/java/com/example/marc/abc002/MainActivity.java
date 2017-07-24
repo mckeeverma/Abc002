@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         textView11 = (TextView) findViewById(R.id.text11);
         Log.d(TAG, "onCreate() in activity");
-        getPermissions();
+        getSmsPermissions();
         textView11.post(new Runnable() {
             @Override
             public void run() {
@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
     //--------------------------------------------------------------------------------------------
-    public void getPermissions() {
+    public void getSmsPermissions() {
         int permissionCheck = checkSelfPermission(Manifest.permission.RECEIVE_SMS);
         if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "RECEIVE_SMS permission was previously granted", Toast.LENGTH_LONG).show();
