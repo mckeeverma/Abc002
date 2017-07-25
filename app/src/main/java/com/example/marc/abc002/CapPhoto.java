@@ -1,10 +1,14 @@
 package com.example.marc.abc002;
+import android.app.Activity;
+import android.app.KeyguardManager;
 import android.app.Service;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -16,6 +20,8 @@ import java.util.TimerTask;
 public class CapPhoto extends Service {
     public String TAG = "marclog_CapPhoto";
     private Handler mHandler = new Handler();
+    KeyguardManager lock;
+    PowerManager powerManager;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -27,7 +33,7 @@ public class CapPhoto extends Service {
                 while (true) {
                     Log.d(TAG, "start sleeping");
                     try {
-                        Thread.sleep(10000);
+                        Thread.sleep(15000);
                     } catch (Exception e) {
                     }
                     Log.d(TAG, "done sleeping");
@@ -44,7 +50,7 @@ public class CapPhoto extends Service {
                     try {
                         startActivity(intent2);
                     } catch (Exception e) {
-                        Log.d(TAG, "Error on startActivity");
+                        Log.d(TAG, "Error on startActivity: " + e.getMessage());
                         e.printStackTrace();
                     }
                 }
