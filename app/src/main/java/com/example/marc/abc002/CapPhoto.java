@@ -33,7 +33,7 @@ public class CapPhoto extends Service {
                 while (true) {
                     Log.d(TAG, "start sleeping");
                     try {
-                        Thread.sleep(15000);
+                        Thread.sleep(20000);
                     } catch (Exception e) {
                     }
                     Log.d(TAG, "done sleeping");
